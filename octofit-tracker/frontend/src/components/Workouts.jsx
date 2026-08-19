@@ -5,13 +5,16 @@ export default function Workouts() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const apiUrl = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/workouts`
+    : 'http://localhost:8000/api/workouts';
 
   useEffect(() => {
     const controller = new AbortController();
 
     async function loadWorkouts() {
       try {
-        const response = await fetch(buildApiUrl('/api/workouts'), { signal: controller.signal });
+        const response = await fetch(apiUrl, { signal: controller.signal });
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }

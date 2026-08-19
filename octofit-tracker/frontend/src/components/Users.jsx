@@ -5,13 +5,16 @@ export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const apiUrl = import.meta.env.VITE_CODESPACE_NAME
+    ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev/api/users`
+    : 'http://localhost:8000/api/users';
 
   useEffect(() => {
     const controller = new AbortController();
 
     async function loadUsers() {
       try {
-        const response = await fetch(buildApiUrl('/api/users'), { signal: controller.signal });
+        const response = await fetch(apiUrl, { signal: controller.signal });
         if (!response.ok) {
           throw new Error(`Request failed with status ${response.status}`);
         }

@@ -1,0 +1,30 @@
+.app-shell {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+}
+
+.nav-link.active {
+  color: #fff;
+}
+
+.card {
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+main.container {
+  max-width: 1200px;
+}
